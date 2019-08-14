@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package>
+    <name>Imedia_Ajaxnewsletter</name>
+    <version>1.0.0.1</version>
+    <stability>stable</stability>
+    <license uri="http://opensource.org/licenses/osl-3.0.php">OSLv3.0</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>Ajax based newsletter popup</summary>
+    <description>1. Ajax based newsletter popup&#xD;
+2. Newsletter fields manageable from admin&#xD;
+3. Cookies expiration manageable from admin</description>
+    <notes>First Preview release</notes>
+    <authors><author><name>iMedia inc.</name><user>imedia</user><email>info@imediadesigns.org</email></author></authors>
+    <date>2015-07-07</date>
+    <time>11:12:13</time>
+    <contents><target name="mageetc"><dir name="modules"><file name="imedia_ajaxnewsletter.xml" hash="19b74949bb1774ba669208fc624e1574"/></dir></target><target name="magecommunity"><dir name="Imedia"><dir name="Ajaxnewsletter"><dir name="Block"><dir name="Adminhtml"><dir name="Newsletter"><dir name="Subscriber"><file name="Grid.php" hash="ee43c48411f320b8d6bdac0c1e67557b"/></dir></dir></dir></dir><dir name="Helper"><file name="Data.php" hash="c59f884c58ae4cbe23a2cf7cfc05c835"/></dir><dir name="Model"><file name="Cookies.php" hash="9aba1a73d204cd19285bba7224beb674"/></dir><dir name="controllers"><file name="IndexController.php" hash="4d48249501f0d8d4cdc346208ae5e960"/></dir><dir name="etc"><file name="adminhtml.xml" hash="2dca5a4f0141735796ede15d067f0069"/><file name="config.xml" hash="7c0766f50b69ec895884086923ef3754"/><file name="system.xml" hash="f7e99e382a63e132a4ea14bd62f058ac"/></dir><dir name="sql"><dir name="imedia_ajaxnewsletter_setup"><file name="mysql4-install-0.0.1.php" hash="851b3430ae0a3aad15d04d597209ca0c"/></dir></dir></dir></dir></target><target name="magedesign"><dir name="frontend"><dir name="base"><dir name="default"><dir name="layout"><dir><dir name="imedia"><file name="ajaxnewsletter.xml" hash="b3d67f0aa51b59c6fea57317f192a645"/></dir></dir></dir><dir name="template"><dir name="imedia"><file name="ajaxnewsletter.phtml" hash="a73df88c56a260f1e774c77157755c35"/><file name="content.phtml" hash="2ad9ece3bec140f042358b280d3c2bc1"/></dir></dir></dir></dir></dir></target><target name="mageskin"><dir name="frontend"><dir name="base"><dir name="default"><dir name="css"><dir name="ajaxnewsletter"><file name="close.png" hash="6adbd7e521121a3f3915dd31a5be00d7"/><file name="newsletter.css" hash="8ec97c58e09a0049b26dbc1044fe6888"/><file name="radio-btn-img.jpg" hash="47b6926b810f1a762fe6f7a3bb64cf89"/></dir></dir></dir></dir></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.1.0</min><max>6.0.0</max></php></required></dependencies>
+</package>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+			<action method="addCss">
+                <stylesheet>css/ajaxnewsletter/newsletter.css</stylesheet>
+            </action>
+		</reference>	
+		<reference name="footer">
+            <block type="newsletter/subscribe" name="newsletter" as="newsletter" template="imedia/ajaxnewsletter.phtml" />
+        </reference>		
+    </default>
+	
+</layout>	

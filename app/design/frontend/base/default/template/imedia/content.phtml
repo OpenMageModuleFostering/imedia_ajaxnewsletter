@@ -1,0 +1,140 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+
+<?php
+$firstname = Mage::getStoreConfig('ajaxnewsletter/display1/firstname');
+$firstname_required = Mage::getStoreConfig('ajaxnewsletter/display1/firstname_required');
+$lastname = Mage::getStoreConfig('ajaxnewsletter/display1/lastname');
+$lastname_required = Mage::getStoreConfig('ajaxnewsletter/display1/lastname_required');
+$gender = Mage::getStoreConfig('ajaxnewsletter/display1/gender');
+$gender_required = Mage::getStoreConfig('ajaxnewsletter/display1/gender_required');
+?>
+
+<form action="javascript:void(0)" method="post" id="newsletter-validate-detail">
+
+	<ul>
+		<li>
+			<input name="email" type="text" id="newsletter" placeholder="EMAIL*" class="required-entry validate-email" /></li>			
+		<li>
+		<?php if($firstname == '1'): ?>
+			<div class="field-box FL" style="float: left;"><input name="first_name" type="text" id="first_name" class="<?php if($firstname_required == '1'): ?>input-text required-entry<?php endif; ?>" placeholder="FIRST NAME" /></div>
+		<?php  endif; ?>
+        <?php if($lastname == '1'): ?>		
+			<div class="field-box FR" style="float: right;"><input name="last_name" type="text" id="last_name"  class="<?php if($lastname_required == '1'): ?> input-text required-entry<?php endif; ?>" placeholder="LAST NAME" /></div>	
+		<?php  endif; ?>	
+		</li>			
+		<?php if($gender == '1'): ?>
+		<div class="input-box">
+		<li>
+			<div class="field-box gender_female FL" style="float: left;">
+				<input id="option4" type="radio" name="gender" value="Women" class="selgender"/>
+				<label for="option4" >&nbsp;</label><?php echo $this->__('WOMEN'); ?>
+			</div>
+			<div class="field-box gender_male FR" style="float: right;">
+				<input id="option5" type="radio" name="gender" value="Men" class="<?php if($gender_required == '1'): ?>validate-one-required-by-name<?php endif; ?> selgender"/>
+				<label for="option5" >&nbsp;</label><?php echo $this->__('MEN'); ?></div>				
+		</li>
+		</div>
+		<?php  endif; ?>
+		<li class="loading" style="display:none;" id="loading">Loading...</li>
+		<li><input value="<?php echo $this->__('Submit'); ?>" type="submit" class="news-button" id="subs_button"/></li>
+	</ul>	
+</form>
+<script type="text/javascript">
+	//<![CDATA[
+		var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+	//]]> 
+</script>
+<script>jQuery.noConflict(); </script>
+<script>
+jQuery(document).ready(function($){	
+
+	//newsletter
+		$('#newsletter-validate-detail input').focus(function(){
+		   $(this).data('placeholder',$(this).attr('placeholder'))
+		   $(this).attr('placeholder','');
+		});
+		$('#newsletter-validate-detail input').blur(function(){
+		   $(this).attr('placeholder',$(this).data('placeholder'));
+		});
+
+		$('#newsletter-validate-detail').submit(function(e){
+			var form_email = $('#newsletter').val();
+			var fname  = $('#first_name').val();
+			var lname  = $('#last_name').val();
+			var gender = jQuery('input[name="gender"]:checked').val();
+			var ctype  = $('#customerType').val();	
+			if(     
+				$('#newsletter').hasClass('validation-failed')||
+				$('#first_name').hasClass('validation-failed')||
+				$('#last_name').hasClass('validation-failed')||
+				$('.selgender').hasClass('validation-failed')
+			){
+				
+				return false;
+			
+			}else{
+				var baseUrl = '<?php echo Mage::getBaseUrl();?>ajaxnewsletter/index/new';
+				$('#loading').show();
+				$.ajax({
+					url: baseUrl,
+					type: "POST",
+					data: $('#newsletter-validate-detail').serialize(),
+					success: function (returnData) {
+						if(returnData){
+							$('#subs_button').hide();
+							$('#loading').hide();
+							$('.enter-world').hide();
+							var successVal = returnData.split('&&');
+							if(successVal[1] == 1){
+								$('#thanks').html(successVal[0]);
+								document.cookie = 'newsletterInfo = yes' + ';expires = Fri, 31 Dec 9999 23:59:59 GMT';
+							}else{
+								$('#thanks').html(returnData);
+							}
+							window.setTimeout(function () {							 
+								window.location.reload();
+								$('html, body').animate({scrollTop : 0},800);
+							}, 5000);						
+						}
+					},
+					error: function (xhr, ajaxOptions, thrownError) {
+						
+					},
+					complete: function () {
+						
+					}
+				});	
+			}	
+		});
+});
+function setCookie() {
+	var key = 'newsletter-close'; 
+	var value = 'yes';
+	document.cookie = key + '=' + value + ';expires=';
+}
+</script>

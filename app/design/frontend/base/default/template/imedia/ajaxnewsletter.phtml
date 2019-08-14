@@ -1,0 +1,92 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>$q = jQuery.noConflict(); </script>
+<script>
+$q(document).ready(function(){
+$q('.box').each(function(e){
+<?php if(!(Mage::getModel('core/cookie')->get('newsletterInfo')) && !(Mage::getModel('core/cookie')->get('newsletter-close'))): ?>
+	//open popup
+	window.setTimeout(function (){
+		  $q("#overlay_form").fadeIn(1000);
+		  $q(".background_overlay").fadeIn(500);
+		  positionPopup();		  
+	}, 100);
+<?php endif; ?>
+	//close popup
+		$q("#close").click(function(){
+		 $q("#overlay_form").fadeOut(500);
+		 $q(".background_overlay").fadeOut(500);
+		});
+	});
+	$q('#home_newsletter').click(function(){
+		$q("#overlay_form").fadeIn(1000);
+		$q(".background_overlay").fadeIn(500);
+		positionPopup();	
+	});
+});
+//position the popup at the center of the page
+function positionPopup(){
+  if(!$q("#overlay_form").is(':visible')){
+    return;
+  } 
+  $q("#overlay_form").css({
+      left: ($q(window).width() - $q('#overlay_form').width()) / 2,
+      top: ($q(window).width() - $q('#overlay_form').width()) / 7,
+      position:'absolute'
+  });
+}
+//maintain the popup at center of the page when browser resized
+$q(window).bind('resize',positionPopup);
+</script>
+<div class="background_overlay"  style="display:none"></div>
+  <div class="modal-dialog modal-popup" id="overlay_form" style="display:none">
+    <div class="modal-content modal-content1">
+		<div class="modal-header modal-header1">
+			<a href="javascript:void();" id="close" onclick="setCookie()" style="float: right"><img src="<?php echo $this->getSkinUrl('css/ajaxnewsletter/close.png'); ?>" class="close-img"/></a>
+		</div>
+		<div class="modal-body newsletter-form">
+			<div class="enter-world">
+				<div class="enter-world-right">
+					<div class="enter-world-info">
+						<?php echo $this->getLayout()->createBlock('core/template')->setTemplate('imedia/content.phtml')->toHtml();?>
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div id="thanks"></div>
+		</div>    
+    </div>
+  </div>
+<!--</div>-->
+<div class="box">
+<div class="footer-head"><?php echo $this->__('Subscribe to our newsletter'); ?></div>
+<div class="footer-search-con">
+	<input id="home_newsletter" type="text" id="pop"  placeholder="<?php echo $this->__('Enter your email'); ?>" data-toggle="modal" data-target="#newsletterModal" title="<?php echo $this->__('Enter your email'); ?>" class="input-text required-entry validate-email" />
+	<input value="OK" type="submit" id="pop" />	
+</div>
+</div>

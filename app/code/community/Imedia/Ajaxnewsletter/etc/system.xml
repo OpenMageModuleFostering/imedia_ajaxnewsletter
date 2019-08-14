@@ -1,0 +1,121 @@
+<?xml version="1.0" ?>
+<config>
+	<tabs>
+		<imedia translate="label" module="imedia_ajaxnewsletter">
+			<label>Imedia Extentions</label>
+			<sort_order>11</sort_order>
+		</imedia>
+	</tabs>
+	
+    <sections>
+        <ajaxnewsletter translate="label" module="imedia_ajaxnewsletter">
+            <class>separator-top</class>
+            <label>Ajax Newsletter</label>
+            <tab>imedia</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>13</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+
+			<groups>
+                <ajaxnewsletter translate="label">
+                    <label>Ajax Newsletter</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enable Ajax Newsletter</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                    </fields>
+                </ajaxnewsletter>
+                <display1 translate="label">
+                    <label>Display Options</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <firstname translate="label">
+                            <label>Show Firstname</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </firstname>
+						<firstname_required translate="label">
+                            <label>Show firstname as required field</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </firstname_required>
+						<lastname translate="label">
+                            <label>Show Lastname</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </lastname>
+						<lastname_required translate="label">
+                            <label>Show Lastname as required field</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </lastname_required>
+						<gender translate="label">
+                            <label>Show select option for gender</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </gender>
+						<gender_required translate="label">
+                            <label>Show gender as required field</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </gender_required>
+						<cookie_expiry translate="label tooltip comment">
+                            <label>Cookie Expiry</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ajaxnewsletter/cookies</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<comment>Select cookies </comment>
+                        </cookie_expiry>
+						                         						
+
+                    </fields>
+                </display1>
+            </groups>
+			
+        </ajaxnewsletter>
+    </sections>
+</config>
