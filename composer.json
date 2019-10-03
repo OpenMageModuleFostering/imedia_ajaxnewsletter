@@ -1,7 +1,7 @@
 {
-    "name": "OpenMageModuleFostering\/Imedia_Ajaxnewsletter",
+    "name": "openmage-module-fostering\/imedia_ajaxnewsletter",
     "type": "magento-module",
-    "license": "OSLv3.0",
+    "license": "OSL-3.0",
     "homepage": "",
     "description": "Ajax based newsletter popup",
     "authors": [
