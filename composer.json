@@ -1,16 +1,19 @@
 {
-    "name": "OpenMageModuleFostering/Imedia_Ajaxnewsletter",
+    "name": "OpenMageModuleFostering\/Imedia_Ajaxnewsletter",
     "type": "magento-module",
     "license": "OSLv3.0",
     "homepage": "",
     "description": "Ajax based newsletter popup",
     "authors": [
-    {
-        "name": "iMedia inc.",
-        "email": "info@imediadesigns.org"
-    }
-],
+        {
+            "name": "iMedia inc.",
+            "email": "info@imediadesigns.org"
+        }
+    ],
     "suggest": {
-        "magento-hackathon/magento-composer-installer": "*"
-    }
+        "magento-hackathon\/magento-composer-installer": "*"
+    },
+    "keywords": [
+        "openmage-module"
+    ]
 }
